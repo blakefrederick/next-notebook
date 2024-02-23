@@ -7,8 +7,9 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Parallel Routes',
-  description: 'Just testing paralell routes with Next.js',
+  title: 'Next Notebook',
+  description:
+    "It's the next Jupyter Notebook I've made (as in second), this one in Next.js",
 }
 
 export default function RootLayout({
