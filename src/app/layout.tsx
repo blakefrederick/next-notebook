@@ -20,14 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav className="font-bold my-8 text-6xl">Time for Another Website</nav>
-        <main>{children}</main>
+        <nav className="font-bold my-8 text-6xl">Jupyter in Next</nav>
         <Suspense fallback={<div>Loading cool content...</div>}>
           <Cool />
         </Suspense>
         <Suspense fallback={<div>Loading interesting content...</div>}>
           <Interesting />
         </Suspense>
+        <main>{children}</main>
       </body>
     </html>
   )
@@ -35,10 +35,10 @@ export default function RootLayout({
 
 async function Cool() {
   await wait(2000)
-  return <div>Woo wow content</div>
+  return <div>because why not</div>
 }
 
 async function Interesting() {
   await wait(4000)
-  return <div>Intriguing, quite the content</div>
+  return <div>for learning</div>
 }
