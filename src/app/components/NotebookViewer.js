@@ -1,7 +1,6 @@
 'use client'
 
-import React from 'react'
-import { Display } from '@nteract/outputs'
+import { DisplayData, ExecuteResult } from '@nteract/outputs'
 import {
   Cells,
   Cell,
@@ -24,12 +23,20 @@ const NotebookViewer = ({ notebook }) => {
                   : cell.source}
               </pre>
             </Input>
-            {/* <Outputs>
+            <Outputs>
               {cell.outputs &&
-                cell.outputs.map((output, outputIndex) => (
-                  <Display key={outputIndex} output={output} />
-                ))}
-            </Outputs> */}
+                cell.outputs.map((output, outputIndex) => {
+                  // Determine the type of output - docs are here: https://github.com/nteract/outputs/blob/master/docs/overview.md
+                  switch (output.output_type) {
+                    case 'display_data':
+                      return <DisplayData key={outputIndex} {...output} />
+                    case 'execute_result':
+                      return <ExecuteResult key={outputIndex} {...output} />
+                    default:
+                      return <></>
+                  }
+                })}
+            </Outputs>
           </Cell>
         ))}
       </Cells>
